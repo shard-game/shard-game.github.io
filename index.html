@@ -4,7 +4,7 @@
   <title>Shard</title>
   <meta name="description" content="Shard is an abstract odyssey that fractures classical platforming.">
   <meta property="og:image" content="og-image.jpg"> <!-- TODO: 1200x630? -->
-  <meta name="keywords" content="shard,game,teaser,trailer,video,glug,glug glug,"/>
+  <meta name="keywords" content="shard,game,teaser,trailer,video,glug glug,"/>
   <link rel="icon" href="favicon.ico" />
   <link rel="shortcut icon" href="favicon.ico" />
   <style type="text/css">
@@ -26,7 +26,6 @@ body {
 }
 .decorator {
   position: absolute;
-  top: 0;
   z-index: 100;
   width:533px;
   height:480px;
@@ -46,8 +45,8 @@ body {
   background:url(flat.jpg);
   background-position:-1093px 0px;
 }
-#desc {
-  margin: 15px auto 15px auto;
+#desc, #logo {
+  margin: 10px auto 10px auto;
   width:854px;
   text-align:center;
 }
@@ -177,14 +176,15 @@ function setIdx(idx)
 </script>
 </head>
 <body>
+<div id="logo"><img src="shard_logo.jpg"></div>
 <div class="decorator" id="dec_left"></div>
 <div class="decorator" id="dec_right"></div>
 
 <div id="top">
-<iframe id="yt" title="YouTube video player" class="youtube-player" type="text/html" width="854" height="480" src="http://www.youtube.com/embed/8JnBoQPiYz0?rel=0&enablejsapi=1" frameborder="0" allowFullScreen></iframe>
+<iframe id="yt" title="YouTube video player" class="youtube-player" type="text/html" width="854" height="480" src="http://www.youtube.com/embed/ASBQdo5Z5Wg?rel=0&enablejsapi=1" frameborder="0" allowFullScreen></iframe>
 </div>
 
-<div id="desc"></div>
+<div id="desc">Everything is made of shards.</div>
 
 <div align=center>
 <div id="bot0" onClick='setIdx(0);' style='display:none'></div>
