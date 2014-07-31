@@ -109,6 +109,11 @@ function setIdx(idx)
   if (idx != 3)
   {
     elem.style.backgroundPosition="-"+(1626+idx*854)+"px 0px";
+    elem.style.width="854px";
+  }
+  else
+  {
+    elem.style.width=0;
   }
 
   elem = document.getElementById("yt");
@@ -203,7 +208,14 @@ function setIdx(idx)
 
 <script type="text/javascript">
 <!--
+if (window.location.hash === "#video")
+{
+  setIdx(3);
+}
+else
+{
   setIdx(Math.floor((Math.random()*3)));
+}
 //-->
 </script>
 
