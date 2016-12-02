@@ -33,17 +33,18 @@ body {
 }
 #dec_right {
   left: 854px;
-  background-position:-1093px 0px;
+  background-position:-1373px 0px;
 }
 #dec_left {
   left: -533px;
-  background-position:-560px 0px;
+  background-position:-840px 0px;
 }
-#top {
+
+#static {
   width:854px;
   height:480px;
   background:url(flat.jpg);
-  background-position:-1093px 0px;
+  background-position:-1373px 0px;
 }
 #desc, #logo {
   margin: 10px auto 10px auto;
@@ -58,7 +59,7 @@ body {
   margin: 15px auto 15px auto;
   text-align:center;
 }
-#bot0, #bot1, #bot2, #bot3 {
+#bot0, #bot1, #bot2, #bot3, #bot4, #bot5, #bot6 {
   width:280px;
   height:158px;
   background:url(flat.jpg);
@@ -73,26 +74,36 @@ body {
   background-position:-280px 0px;
 }
 #bot3 {
+  background-position:-560px -158px;
+}
+#bot4 {
   background-position:0px -158px;
+}
+#bot5 {
+  background-position:0px 0px;
+}
+#bot6 {
+  background-position:0px -316px;
 }
 #tw {
   width:50px;
   height:41px;
   background:url(flat.jpg);
-  background-position:0px -82px;
+  background-position:-560px -82px;
   display:inline-block;
 }
 #fb {
   width:41px;
   height:41px;
   background:url(flat.jpg);
+  background-position:-560px 0px;
   display:inline-block;
 }
 #ht {
   width:47px;
   height:41px;
   background:url(flat.jpg);
-  background-position:0px -41px;
+  background-position:-560px -41px;
   display:inline-block;
 }
   </style>
@@ -109,29 +120,40 @@ body {
 <!--
 function setIdx(idx)
 {
-  var elem = document.getElementById("top");
-  if (idx != 3)
+  var elem = document.getElementById("static");
+  if (idx < 3)
   {
-    elem.style.backgroundPosition="-"+(1626+idx*854)+"px 0px";
-    elem.style.width="854px";
+    elem.style.backgroundPosition="-"+(1906+idx*854)+"px 0px";
+    elem.style.display = "inline-block";
   }
   else
   {
-    elem.style.width=0;
+    elem.style.display = "none";
   }
 
   elem = document.getElementById("yt");
   if (idx != 3)
   {
     elem.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-    elem.style.width=0;
-    elem.style.height=0;
+    elem.style.display = "none";
   }
   else
   {
-    elem.style.width="854px";
-    elem.style.height="480px";
+    elem.style.display = "inline-block";
     elem.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+  }
+
+  for (i = 4; i < 7; ++i)
+  {
+    var elem = document.getElementById("gif"+i);
+    if (idx == i)
+    {
+      elem.style.display = "inline-block";
+    }
+    else
+    {
+      elem.style.display = "none";
+    }
   }
 
   elem = document.getElementById("desc");
@@ -147,7 +169,16 @@ function setIdx(idx)
     elem.innerHTML = "This tale is set as a platformer.";
     break;
  case 3:
-    elem.innerHTML = "Prototype Gameplay ca. May 2014.";
+    elem.innerHTML = "Shard Gameplay ca. Oct 2016.";
+    break;
+  case 5:
+    elem.innerHTML = "Reshape your surroundings.";
+    break;
+  case 4:
+    elem.innerHTML = "Join a friend and play along.";
+    break;
+  case 6:
+    elem.innerHTML = "Discover other worlds.";
     break;
   }
 
@@ -174,7 +205,7 @@ function setIdx(idx)
     break;
   }
 
-  for (i = 0; i < 4; ++i)
+  for (i = 0; i < 7; ++i)
   {
     var hide = idx == i;
     elem = document.getElementById("bot"+i);
@@ -189,24 +220,24 @@ function setIdx(idx)
 <div class="decorator" id="dec_left"></div>
 <div class="decorator" id="dec_right"></div>
 
+<div id="static"></div>
+<div id="gif4"><img src="4.gif"></div>
+<div id="gif5"><img src="5.gif"></div>
+<div id="gif6"><img src="6.gif"></div>
 <div id="top">
-<iframe id="yt" title="YouTube video player" class="youtube-player" type="text/html" width="854" height="480" src="http://www.youtube.com/embed/iV3qvCiBVc0?rel=0&enablejsapi=1" frameborder="0" allowFullScreen></iframe>
+<iframe id="yt" title="YouTube video player" class="youtube-player" type="text/html" width="854" height="480" src="http://www.youtube.com/embed/1nUGCyLZySA?rel=0&enablejsapi=1" frameborder="0" allowFullScreen></iframe>
 </div>
 
 <div id="desc">Everything is made of shards.</div>
 
 <div align=center>
+<div id="bot4" onClick='setIdx(4);' style='display:none'></div>
+<div id="bot5" onClick='setIdx(5);' style='display:none'></div>
+<div id="bot6" onClick='setIdx(6);' style='display:none'></div>
 <div id="bot0" onClick='setIdx(0);' style='display:none'></div>
 <div id="bot1" onClick='setIdx(1);' style='display:none'></div>
 <div id="bot2" onClick='setIdx(2);' style='display:none'></div>
 <div id="bot3" onClick='setIdx(3);' style='display:none'></div>
-</div>
-
-<div id="social">
-
-<a id="ht-link" href="http://bit.ly/1j7cnDA" alt="mr. div - white-xmas"><div id="ht"></div></a>
-<a href="http://facebook.com/ShardGame"><div id="fb"></div></a>
-<a href="http://twitter.com/ShardGame"><div id="tw"></div></a>
 </div>
 
 <div id="subscribe">
@@ -218,6 +249,13 @@ function setIdx(idx)
     <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
     </div>
 </form>
+</div>
+
+<div id="social">
+
+<a id="ht-link" href="http://bit.ly/1j7cnDA" alt="mr. div - white-xmas"><div id="ht"></div></a>
+<a href="http://facebook.com/ShardGame"><div id="fb"></div></a>
+<a href="http://twitter.com/ShardGame"><div id="tw"></div></a>
 </div>
 
 <script type="text/javascript">
