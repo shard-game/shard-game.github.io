@@ -143,12 +143,20 @@ function setIdx(idx)
     elem.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
   }
 
+  // only load big gif files when clicked upon
+  var urls = [
+    "https://dl.dropboxusercontent.com/s/dyhvt0cw3loycal/4.gif",
+    "https://dl.dropboxusercontent.com/s/wg946t7zsp522z8/5.gif",
+    "https://dl.dropboxusercontent.com/s/o9xaz9mdrq3s869/6.gif"
+  ];
+
   for (i = 4; i < 7; ++i)
   {
-    var elem = document.getElementById("gif"+i);
+    elem = document.getElementById("gif"+i);
     if (idx == i)
     {
       elem.style.display = "inline-block";
+      elem.innerHTML = "<img width=854 height=480 src=\"" + urls[idx - 4] + "\">"
     }
     else
     {
@@ -221,9 +229,9 @@ function setIdx(idx)
 <div class="decorator" id="dec_right"></div>
 
 <div id="static"></div>
-<div id="gif4"><img src="https://dl.dropboxusercontent.com/s/dyhvt0cw3loycal/4.gif"></div>
-<div id="gif5"><img src="https://dl.dropboxusercontent.com/s/wg946t7zsp522z8/5.gif"></div>
-<div id="gif6"><img src="https://dl.dropboxusercontent.com/s/o9xaz9mdrq3s869/6.gif"></div>
+<div id="gif4"></div>
+<div id="gif5"></div>
+<div id="gif6"></div>
 <div id="top">
 <iframe id="yt" title="YouTube video player" class="youtube-player" type="text/html" width="854" height="480" src="http://www.youtube.com/embed/1nUGCyLZySA?rel=0&enablejsapi=1" frameborder="0" allowFullScreen></iframe>
 </div>
